@@ -16,5 +16,6 @@ const config: Config = {
     },
   },
   plugins: [],
+  darkMode: ["selector", '[data-mantine-color-scheme="dark"]'], // use mantine color scheme to determine dark mode
 };
 export default config;
