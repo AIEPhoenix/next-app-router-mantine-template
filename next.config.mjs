@@ -6,6 +6,12 @@ const withBundleAnalyzer = bundleAnalyzer({
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  compiler: {
+    emotion: true,
+  },
+  sassOptions: {
+    prependData: `@import "./styles/_mantine.scss";`,
+  },
   experimental: {
     optimizePackageImports: [
       "@mantine/core",
