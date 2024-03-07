@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import '@/styles/globals.css';
 
-import { ColorSchemeScript, MantineProvider } from '@mantine/core';
+import { ColorSchemeScript, DirectionProvider, MantineProvider } from '@mantine/core';
 
 export const metadata: Metadata = {
   title: 'Create Next App',
@@ -23,7 +23,9 @@ export default function RootLayout({
         />
       </head>
       <body>
-        <MantineProvider>{children}</MantineProvider>
+        <DirectionProvider>
+          <MantineProvider>{children}</MantineProvider>
+        </DirectionProvider>
       </body>
     </html>
   );

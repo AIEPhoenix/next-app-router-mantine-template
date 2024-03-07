@@ -1,7 +1,7 @@
 @use 'sass:math';
 
 // Define variables for your breakpoints,
-// values must be the same as in your theme
+// values must be the same as in your theme and postcss-simple-vars plugin
 $mantine-breakpoint-xs: '36em';
 $mantine-breakpoint-sm: '48em';
 $mantine-breakpoint-md: '62em';
