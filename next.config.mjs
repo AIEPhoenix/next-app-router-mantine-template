@@ -28,6 +28,7 @@ const nextConfig = {
       '@mantine/notifications',
     ],
   },
+  output: 'standalone',
 };
 
 export default withBundleAnalyzer(nextConfig);
