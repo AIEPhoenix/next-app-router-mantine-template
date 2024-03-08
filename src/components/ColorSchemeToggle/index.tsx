@@ -22,10 +22,12 @@ export function ColorSchemeToggle() {
   return (
     <ButtonsWrapper>
       <Group justify="center" mt="xl">
-        <Button onClick={() => setColorScheme('light')}>Light</Button>
+        <Button className="text-[yellow]" onClick={() => setColorScheme('light')}>
+          Light
+        </Button>
         <Button onClick={() => setColorScheme('dark')}>Dark</Button>
         <Button onClick={() => setColorScheme('auto')}>
-        <Icon icon="material-symbols:night-sight-auto" />
+          <Icon icon="material-symbols:night-sight-auto" />
         </Button>
       </Group>
     </ButtonsWrapper>

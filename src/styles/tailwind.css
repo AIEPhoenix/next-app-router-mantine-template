@@ -1,10 +1,18 @@
-/* add layer to tailwind base to solve conflict with mantine */
-@layer tailwind {
+/*
+When using the @layer directive in Tailwind, it is important to note that Tailwind reserves three built-in layers: base, components, and utilities. If you use any of these three built-in layers to name your custom layers, Tailwind will treat it as using its preset logic and add it to the corresponding rules, and remove that custom layer from the final generated CSS.
+Therefore, when adding new custom layers, you must use other naming conventions to avoid conflicts with Tailwind's built-in layers. This is why, in this case, I have named the wrapping layers I'm adding for Tailwind as tw_base, tw_components, and tw_utilities.
+*/
+@layer tw_base {
   @tailwind base;
 }
 
-@tailwind components;
-@tailwind utilities;
+@layer tw_components {
+  @tailwind components;
+}
+
+@layer tw_utilities {
+  @tailwind utilities;
+}
 
 @layer utilities {
   .text-balance {

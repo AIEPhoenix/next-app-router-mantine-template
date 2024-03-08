@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import '@/styles/globals.css';
+import '@/styles/globals.scss';
 
 import { ColorSchemeScript, DirectionProvider, MantineProvider } from '@mantine/core';
 

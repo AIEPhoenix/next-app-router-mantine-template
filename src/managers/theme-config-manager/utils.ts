@@ -1,11 +1,11 @@
 import { cookies } from 'next/headers';
 import { getCookie } from 'cookies-next';
+import { MantineColorScheme } from '@mantine/core';
 import {
   THEME_COLOR_SCHEMA_STORE_NAME,
   THEME_LTR_STORE_NAME,
   THEME_PRIMARY_COLOR_STORE_NAME,
 } from './def';
-import { MantineColorScheme } from '@mantine/core';
 
 export function getThemeConfigPersistentStateFromCookies() {
   const colorSchema = (getCookie(THEME_COLOR_SCHEMA_STORE_NAME, { cookies }) ||
@@ -18,4 +18,3 @@ export function getThemeConfigPersistentStateFromCookies() {
     primaryColor,
   };
 }
-0

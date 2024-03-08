@@ -1,0 +1,25 @@
+/*
+Although according to the specification, @import can exist after @charset or @layer, in practice, during the bundling process, all @import statements are moved to the top. Therefore, to ensure that the layer order definition is placed at the very top, we use the approach of declaring them in a separate file and importing it.
+This file needs to be a SCSS file, or if it's a CSS file, you need to add the postcss-import plugin. As mentioned in issues like https://github.com/vercel/next.js/issues/16630, Next.js does not guarantee the import order of CSS files, especially during production builds.
+Currently, most solutions rely on declaring the @layer cascade and its order to ensure that styles are overridden as expected. While defining the layers is easy, as mentioned before, the import order cannot be guaranteed during production builds.
+There are currently two explored ways to ensure the order during production builds:
+Use a CSS file and include the postcss-import plugin
+Use an SCSS file
+Another approach is to use a script to insert styles at the very top: https://github.com/vercel/next.js/issues/16630#issuecomment-1644918877
+In this case, we'll use the SCSS approach.
+
+1、首先虽然根据规范，@import可以存在于@charset或@layer之后，但是实际在打包时，会将所有的@import提前 所以此处为了layers的顺序定义能够位于最顶部，使用在单独文件声明并导入的形式。
+2、此文件需要为scss，或者改为css但是添加postcss-import插件。如 https://github.com/vercel/next.js/issues/16630 等issues所说，next.js中不保证css的导入顺序，尤其是在生产构建时。
+目前大部分方案都是声明使用 cascade layer 和其声明顺序来保证样式能够按照预期的方式覆盖。 定义虽然容易但是在生产构建时，如上所说是无法保证导入顺序的。
+然生产构建能够保证顺序目前探索出来有两种方式：
+    1、本文件使用css，加入 postcss-import 插件
+    2、本文件使用scss
+还有种是通过脚本在最顶部插入style来解决：https://github.com/vercel/next.js/issues/16630#issuecomment-1644918877
+此处使用scss方案
+*/
+@import './layers.css';
+@import './tailwind.css';
+@import '@mantine/core/styles.layer.css';
+@import '@mantine/nprogress/styles.layer.css';
+@import '@mantine/notifications/styles.layer.css';
+@import '@mantine/dates/styles.layer.css';
