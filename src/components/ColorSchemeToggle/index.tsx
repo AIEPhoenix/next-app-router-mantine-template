@@ -1,8 +1,9 @@
 'use client';
 
-import { Button, Group, useMantineColorScheme } from '@mantine/core';
+import { Button, Group } from '@mantine/core';
 import styled from '@emotion/styled';
 import { Icon } from '@iconify-icon/react';
+import { useThemeConfig } from '@/managers/ThemeConfigManager/context';
 
 const ButtonsWrapper = styled.div`
   .mantine-Button-root {
@@ -17,7 +18,7 @@ const ButtonsWrapper = styled.div`
 `;
 
 export function ColorSchemeToggle() {
-  const { setColorScheme } = useMantineColorScheme();
+  const { setColorScheme } = useThemeConfig();
 
   return (
     <ButtonsWrapper>
