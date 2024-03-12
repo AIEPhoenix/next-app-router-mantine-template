@@ -2,8 +2,8 @@
 
 import { Button, Group } from '@mantine/core';
 import styled from '@emotion/styled';
-import { Icon } from '@iconify-icon/react';
 import { useThemeConfig } from '@/managers/ThemeConfigManager/context';
+import MaterialSymbolsLightNightSightAutoRounded from '~icons/material-symbols-light/night-sight-auto-rounded.jsx';
 
 const ButtonsWrapper = styled.div`
   .mantine-Button-root {
@@ -28,7 +28,7 @@ export function ColorSchemeToggle() {
         </Button>
         <Button onClick={() => setColorScheme('dark')}>Dark</Button>
         <Button onClick={() => setColorScheme('auto')}>
-          <Icon icon="material-symbols:night-sight-auto" />
+          <MaterialSymbolsLightNightSightAutoRounded />
         </Button>
       </Group>
     </ButtonsWrapper>
