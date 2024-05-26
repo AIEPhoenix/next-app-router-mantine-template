@@ -23,7 +23,7 @@ import {
   THEME_PRIMARY_COLOR_STORE_NAME,
   ThemeConfigContextProps,
 } from './def';
-import { ThemeConfigProvider } from './context';
+import ThemeConfigProvider from './context';
 
 const cookieOptions: OptionsType = {
   expires: dayjs().add(3, 'year').toDate(),

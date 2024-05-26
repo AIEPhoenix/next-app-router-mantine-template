@@ -10,9 +10,6 @@ const nextConfig = {
   compiler: {
     emotion: true,
   },
-  eslint: {
-    ignoreDuringBuilds: true,
-  },
   sassOptions: {
     includePaths: ['./src'],
     prependData: `@import "./styles/_mantine.scss";`,
