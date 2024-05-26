@@ -1,3 +1,4 @@
+import path from 'path';
 import bundleAnalyzer from '@next/bundle-analyzer';
 
 const withBundleAnalyzer = bundleAnalyzer({
@@ -9,18 +10,22 @@ const nextConfig = {
   compiler: {
     emotion: true,
   },
+  eslint: {
+    ignoreDuringBuilds: true,
+  },
   sassOptions: {
+    includePaths: ['./src'],
     prependData: `@import "./styles/_mantine.scss";`,
   },
   experimental: {
     optimizePackageImports: [
-      "@mantine/core",
-      "@mantine/hooks",
-      "@mantine/form",
-      "@mantine/dates",
-      "@mantine/modals",
-      "@mantine/nprogress",
-      "@mantine/notifications",
+      '@mantine/core',
+      '@mantine/hooks',
+      '@mantine/form',
+      '@mantine/dates',
+      '@mantine/modals',
+      '@mantine/nprogress',
+      '@mantine/notifications',
     ],
   },
 };
