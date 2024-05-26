@@ -12,7 +12,7 @@ export type ThemePrimaryColor = DefaultMantineColor;
 
 export interface ThemeConfigContextProps {
   colorScheme: ThemeColorScheme;
-  activeColorScheme: Exclude<ThemeColorScheme, 'auto'>;
+  activeColorScheme: Exclude<ThemeActiveColorScheme, 'auto'>;
   direction: ThemeDirection;
   primaryColor: ThemePrimaryColor;
 
