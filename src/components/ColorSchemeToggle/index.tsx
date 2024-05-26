@@ -2,6 +2,7 @@
 
 import { Button, Group, useMantineColorScheme } from '@mantine/core';
 import styled from '@emotion/styled';
+import { Icon } from '@iconify-icon/react';
 
 const ButtonsWrapper = styled.div`
   .mantine-Button-root {
@@ -23,7 +24,9 @@ export function ColorSchemeToggle() {
       <Group justify="center" mt="xl">
         <Button onClick={() => setColorScheme('light')}>Light</Button>
         <Button onClick={() => setColorScheme('dark')}>Dark</Button>
-        <Button onClick={() => setColorScheme('auto')}>Auto</Button>
+        <Button onClick={() => setColorScheme('auto')}>
+        <Icon icon="material-symbols:night-sight-auto" />
+        </Button>
       </Group>
     </ButtonsWrapper>
   );
