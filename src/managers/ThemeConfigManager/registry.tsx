@@ -39,12 +39,8 @@ interface ThemeConfigManagerStateProviderProps
   onPrimaryColorChange: (newPrimaryColor: string) => void;
 }
 
-function ThemeConfigManagerStateProvider({
-  children,
-  ...props
-}: ThemeConfigManagerStateProviderProps) {
-  const { setColorScheme: mantineSetColorScheme, clearColorScheme: mantineClearColorScheme } =
-    useMantineColorScheme();
+function ThemeConfigManagerStateProvider({ children, ...props }: ThemeConfigManagerStateProviderProps) {
+  const { setColorScheme: mantineSetColorScheme, clearColorScheme: mantineClearColorScheme } = useMantineColorScheme();
   const activeColorScheme = useComputedColorScheme();
   const { dir, setDirection: mantineSetDirection } = useDirection();
 

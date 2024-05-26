@@ -21,8 +21,8 @@ export function Welcome() {
         mt="xl"
         c="primary.5"
       >
-        This starter Next.js project includes a minimal setup for server side rendering, if you want
-        to learn more on Mantine + Next.js integration follow{' '}
+        This starter Next.js project includes a minimal setup for server side rendering, if you want to learn more on
+        Mantine + Next.js integration follow{' '}
         <Anchor href="https://mantine.dev/guides/next/" size="lg">
           this guide
         </Anchor>

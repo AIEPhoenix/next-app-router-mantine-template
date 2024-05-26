@@ -25,10 +25,7 @@ export default function RootLayout({
           defaultColorScheme={themeConfigFromCookies.colorScheme}
           localStorageKey={THEME_COLOR_SCHEMA_STORE_NAME}
         />
-        <meta
-          name="viewport"
-          content="minimum-scale=1, initial-scale=1, width=device-width, user-scalable=no"
-        />
+        <meta name="viewport" content="minimum-scale=1, initial-scale=1, width=device-width, user-scalable=no" />
       </head>
       <body>
         <ManagersServerRegistry>{children}</ManagersServerRegistry>

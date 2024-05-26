@@ -9,8 +9,7 @@ import {
 } from './def';
 
 export function getThemeConfigPersistentStateFromCookies() {
-  const colorScheme = (getCookie(THEME_COLOR_SCHEMA_STORE_NAME, { cookies }) ||
-    'light') as ThemeColorScheme;
+  const colorScheme = (getCookie(THEME_COLOR_SCHEMA_STORE_NAME, { cookies }) || 'light') as ThemeColorScheme;
   const direction = getCookie(THEME_DIRECTION_STORE_NAME, { cookies }) as ThemeDirection;
   const primaryColor = getCookie(THEME_PRIMARY_COLOR_STORE_NAME, { cookies }) as string;
   return {

@@ -1,7 +1,7 @@
 'use client';
 
-import {PropsWithChildren, createContext, useContext} from 'react';
-import {ThemeConfigContextProps} from './def';
+import { PropsWithChildren, createContext, useContext } from 'react';
+import { ThemeConfigContextProps } from './def';
 
 const ThemeConfigContext = createContext<ThemeConfigContextProps | null>(null);
 
@@ -17,22 +17,21 @@ export function useThemeConfig() {
   return context;
 }
 
-interface ThemeConfigProviderProps extends ThemeConfigContextProps, PropsWithChildren {
-}
+interface ThemeConfigProviderProps extends ThemeConfigContextProps, PropsWithChildren {}
 
 const ThemeConfigProvider = ({
-                               colorScheme,
-                               activeColorScheme,
-                               direction,
-                               primaryColor,
-                               toggleColorScheme,
-                               setColorScheme,
-                               clearColorScheme,
-                               toggleDirection,
-                               setDirection,
-                               setPrimaryColor,
-                               children,
-                             }: ThemeConfigProviderProps) => (
+  colorScheme,
+  activeColorScheme,
+  direction,
+  primaryColor,
+  toggleColorScheme,
+  setColorScheme,
+  clearColorScheme,
+  toggleDirection,
+  setDirection,
+  setPrimaryColor,
+  children,
+}: ThemeConfigProviderProps) => (
   <ThemeConfigContext.Provider
     value={{
       colorScheme,
@@ -49,6 +48,6 @@ const ThemeConfigProvider = ({
   >
     {children}
   </ThemeConfigContext.Provider>
-)
+);
 
 export default ThemeConfigProvider;
