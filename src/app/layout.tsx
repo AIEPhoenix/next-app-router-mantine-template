@@ -1,7 +1,10 @@
 import type { Metadata } from 'next';
 import '@/styles/globals.scss';
 
-import { ColorSchemeScript, DirectionProvider, MantineProvider } from '@mantine/core';
+import { ColorSchemeScript } from '@mantine/core';
+import { getThemeConfigPersistentStateFromCookies } from '@/managers/ThemeConfigManager/utils';
+import { THEME_COLOR_SCHEMA_STORE_NAME } from '@/managers/ThemeConfigManager/def';
+import ManagersServerRegistry from '@/managers/ManagersRegistry';
 
 export const metadata: Metadata = {
   title: 'Create Next App',
@@ -13,19 +16,22 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const themeConfigFromCookies = getThemeConfigPersistentStateFromCookies();
+
   return (
-    <html lang="en">
+    <html lang="en" dir={themeConfigFromCookies.direction}>
       <head>
-        <ColorSchemeScript />
+        <ColorSchemeScript
+          defaultColorScheme={themeConfigFromCookies.colorScheme}
+          localStorageKey={THEME_COLOR_SCHEMA_STORE_NAME}
+        />
         <meta
           name="viewport"
           content="minimum-scale=1, initial-scale=1, width=device-width, user-scalable=no"
         />
       </head>
       <body>
-        <DirectionProvider>
-          <MantineProvider>{children}</MantineProvider>
-        </DirectionProvider>
+        <ManagersServerRegistry>{children}</ManagersServerRegistry>
       </body>
     </html>
   );
