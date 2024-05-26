@@ -1,4 +1,6 @@
 import { Title, Text, Anchor } from '@mantine/core';
+import Image from 'next/image';
+import testImage from '@/assets/test/coffee-8342636.jpg';
 import classes from './index.module.css';
 
 export function Welcome() {
@@ -25,6 +27,7 @@ export function Welcome() {
         </Anchor>
         . To get started edit page.tsx file.
       </Text>
+      <Image src={testImage} alt="test image" width={400} />
     </>
   );
 }
