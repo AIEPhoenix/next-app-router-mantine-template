@@ -1,18 +1,18 @@
 import { PropsWithChildren } from 'react';
-import ThemeConfigManagerRegistry from './ThemeConfigManager/registry';
-import { getThemeConfigPersistentStateFromCookies } from './ThemeConfigManager/utils';
+import ThemeManagerRegistry from './ThemeManager/registry';
+import { getThemePersistentStateFromCookies } from './ThemeManager/utils';
 
 const ManagersServerRegistry = (props: PropsWithChildren) => {
-  const themeConfigFromCookies = getThemeConfigPersistentStateFromCookies();
+  const themePersistentStateFromCookies = getThemePersistentStateFromCookies();
 
   return (
-    <ThemeConfigManagerRegistry
-      colorScheme={themeConfigFromCookies.colorScheme}
-      direction={themeConfigFromCookies.direction}
-      primaryColor={themeConfigFromCookies.primaryColor}
+    <ThemeManagerRegistry
+      colorScheme={themePersistentStateFromCookies.colorScheme}
+      direction={themePersistentStateFromCookies.direction}
+      primaryColor={themePersistentStateFromCookies.primaryColor}
     >
       {props.children}
-    </ThemeConfigManagerRegistry>
+    </ThemeManagerRegistry>
   );
 };
 

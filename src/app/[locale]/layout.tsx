@@ -3,8 +3,8 @@ import { ColorSchemeScript } from '@mantine/core';
 import type { Metadata } from 'next';
 import i18nConfig from '@/i18nConfig';
 import ManagersServerRegistry from '@/managers/ManagersRegistry';
-import { THEME_COLOR_SCHEMA_STORE_NAME } from '@/managers/ThemeConfigManager/def';
-import { getThemeConfigPersistentStateFromCookies } from '@/managers/ThemeConfigManager/utils';
+import { THEME_COLOR_SCHEMA_STORE_NAME } from '@/managers/ThemeManager/def';
+import { getThemePersistentStateFromCookies } from '@/managers/ThemeManager/utils';
 import '@/styles/globals.scss';
 
 export const metadata: Metadata = {
@@ -24,7 +24,7 @@ export default function RootLayout({
     params: { locale: string };
   } & PropsWithChildren
 >) {
-  const themeConfigFromCookies = getThemeConfigPersistentStateFromCookies();
+  const themeConfigFromCookies = getThemePersistentStateFromCookies();
 
   return (
     <html lang={locale} dir={themeConfigFromCookies.direction}>

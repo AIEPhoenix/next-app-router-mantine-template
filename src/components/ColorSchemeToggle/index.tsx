@@ -2,7 +2,7 @@
 
 import { Button, Group } from '@mantine/core';
 import styled from '@emotion/styled';
-import { useThemeConfig } from '@/managers/ThemeConfigManager/context';
+import { useTheme } from '@/managers/ThemeManager/context';
 import MaterialSymbolsLightNightSightAutoRounded from '~icons/material-symbols-light/night-sight-auto-rounded.jsx';
 
 const ButtonsWrapper = styled.div`
@@ -18,7 +18,7 @@ const ButtonsWrapper = styled.div`
 `;
 
 export function ColorSchemeToggle() {
-  const { setColorScheme } = useThemeConfig();
+  const { setColorScheme } = useTheme();
 
   return (
     <ButtonsWrapper>

@@ -2,27 +2,27 @@
 
 import { PropsWithChildren, createContext, useContext, useMemo } from 'react';
 import { useMantineTheme } from '@mantine/core';
-import { ThemeConfigContextValues } from './def';
+import { ThemeContextValues } from './def';
 
-const ThemeConfigContext = createContext<ThemeConfigContextValues | null>(null);
+const ThemeContext = createContext<ThemeContextValues | null>(null);
 
-export function useThemeConfig() {
-  const context = useContext(ThemeConfigContext);
+export function useTheme() {
+  const context = useContext(ThemeContext);
 
   if (!context) {
     throw new Error(
-      'useThemeConfig hook was called outside of context, make sure your app is wrapped with ThemeConfigProvider component'
+      'useTheme hook was called outside of context, make sure your app is wrapped with ThemeProvider component'
     );
   }
 
   return context;
 }
 
-interface ThemeConfigProviderProps
-  extends Omit<ThemeConfigContextValues, 'isDark' | 'colorPrimaryShade'>,
+interface ThemeProviderProps
+  extends Omit<ThemeContextValues, 'isDark' | 'colorPrimaryShade' | 'theme'>,
     PropsWithChildren {}
 
-const ThemeConfigProvider = ({
+const ThemeProvider = ({
   colorScheme,
   activeColorScheme,
   direction,
@@ -34,7 +34,7 @@ const ThemeConfigProvider = ({
   setDirection,
   setPrimaryColor,
   children,
-}: ThemeConfigProviderProps) => {
+}: ThemeProviderProps) => {
   const isDark = activeColorScheme === 'dark';
   const theme = useMantineTheme();
   const colorPrimaryShade = useMemo(() => {
@@ -46,7 +46,7 @@ const ThemeConfigProvider = ({
   }, [theme, isDark]);
 
   return (
-    <ThemeConfigContext.Provider
+    <ThemeContext.Provider
       value={{
         colorScheme,
         activeColorScheme,
@@ -54,6 +54,7 @@ const ThemeConfigProvider = ({
         primaryColor,
         isDark,
         colorPrimaryShade,
+        theme,
         toggleColorScheme,
         setColorScheme,
         clearColorScheme,
@@ -63,8 +64,8 @@ const ThemeConfigProvider = ({
       }}
     >
       {children}
-    </ThemeConfigContext.Provider>
+    </ThemeContext.Provider>
   );
 };
 
-export default ThemeConfigProvider;
+export default ThemeProvider;

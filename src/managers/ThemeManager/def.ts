@@ -1,5 +1,5 @@
 import { PROJECT_STORE_PREFIX } from '@/project-settings/global';
-import { DefaultMantineColor, Direction, MantineColorScheme } from '@mantine/core';
+import { DefaultMantineColor, Direction, MantineColorScheme, MantineTheme } from '@mantine/core';
 
 export const THEME_COLOR_SCHEMA_STORE_NAME = `${PROJECT_STORE_PREFIX}THEME_COLOR_SCHEMA`;
 export const THEME_DIRECTION_STORE_NAME = `${PROJECT_STORE_PREFIX}THEME_DIRECTION`;
@@ -10,7 +10,7 @@ export type ThemeActiveColorScheme = ThemeColorScheme;
 export type ThemeDirection = Direction;
 export type ThemePrimaryColor = DefaultMantineColor;
 
-export interface ThemeConfigContextValues {
+export interface ThemeContextValues {
   colorScheme: ThemeColorScheme;
   activeColorScheme: Exclude<ThemeActiveColorScheme, 'auto'>;
   direction: ThemeDirection;
@@ -18,6 +18,7 @@ export interface ThemeConfigContextValues {
 
   isDark: boolean;
   colorPrimaryShade: number;
+  theme: MantineTheme;
 
   toggleColorScheme: () => void;
   setColorScheme: (colorScheme: ThemeColorScheme) => void;

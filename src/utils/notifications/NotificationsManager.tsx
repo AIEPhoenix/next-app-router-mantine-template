@@ -15,12 +15,7 @@ class NotificationsManagerClass {
       title,
       message:
         typeof message === 'string' ? (
-          <Text
-            inherit
-            style={{
-              whiteSpace: 'pre-line',
-            }}
-          >
+          <Text inherit className="render-as-is-wrap-text">
             {message}
           </Text>
         ) : (
@@ -42,12 +37,7 @@ class NotificationsManagerClass {
       title,
       message:
         typeof message === 'string' ? (
-          <Text
-            inherit
-            style={{
-              whiteSpace: 'pre-line',
-            }}
-          >
+          <Text inherit className="render-as-is-wrap-text">
             {message}
           </Text>
         ) : (

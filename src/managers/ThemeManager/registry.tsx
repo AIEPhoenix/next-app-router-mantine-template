@@ -19,12 +19,12 @@ import { Notifications } from '@mantine/notifications';
 import { deleteCookie, setCookie } from 'cookies-next';
 import { OptionsType } from 'cookies-next/lib/types';
 import dayjs from 'dayjs';
-import ThemeConfigProvider from './context';
+import ThemeProvider from './context';
 import {
   THEME_COLOR_SCHEMA_STORE_NAME,
   THEME_DIRECTION_STORE_NAME,
   THEME_PRIMARY_COLOR_STORE_NAME,
-  ThemeConfigContextValues,
+  ThemeContextValues,
 } from './def';
 
 const cookieOptions: OptionsType = {
@@ -35,13 +35,13 @@ const colorSchemeManager = localStorageColorSchemeManager({
   key: THEME_COLOR_SCHEMA_STORE_NAME,
 });
 
-interface ThemeConfigManagerStateProviderProps
+interface ThemeManagerStateProviderProps
   extends PropsWithChildren,
-    Pick<ThemeConfigContextValues, 'colorScheme' | 'direction' | 'primaryColor'> {
+    Pick<ThemeContextValues, 'colorScheme' | 'direction' | 'primaryColor'> {
   onPrimaryColorChange: (newPrimaryColor: string) => void;
 }
 
-function ThemeConfigManagerStateProvider({ children, ...props }: ThemeConfigManagerStateProviderProps) {
+function ThemeManagerStateProvider({ children, ...props }: ThemeManagerStateProviderProps) {
   const { setColorScheme: mantineSetColorScheme, clearColorScheme: mantineClearColorScheme } = useMantineColorScheme();
   const activeColorScheme = useComputedColorScheme();
   const { dir, setDirection: mantineSetDirection } = useDirection();
@@ -50,7 +50,7 @@ function ThemeConfigManagerStateProvider({ children, ...props }: ThemeConfigMana
   const [direction, setDirection] = useState(props.direction);
 
   return (
-    <ThemeConfigProvider
+    <ThemeProvider
       colorScheme={colorScheme}
       activeColorScheme={activeColorScheme}
       direction={direction}
@@ -88,15 +88,15 @@ function ThemeConfigManagerStateProvider({ children, ...props }: ThemeConfigMana
       }}
     >
       {children}
-    </ThemeConfigProvider>
+    </ThemeProvider>
   );
 }
 
-interface ThemeConfigManagerRegistryProps
+interface ThemeManagerRegistryProps
   extends PropsWithChildren,
-    Pick<ThemeConfigContextValues, 'colorScheme' | 'direction' | 'primaryColor'> {}
+    Pick<ThemeContextValues, 'colorScheme' | 'direction' | 'primaryColor'> {}
 
-const ThemeConfigManagerRegistry = ({ children, ...props }: ThemeConfigManagerRegistryProps) => {
+const ThemeManagerRegistry = ({ children, ...props }: ThemeManagerRegistryProps) => {
   const [primaryColor, setPrimaryColor] = useState(props.primaryColor || 'teal');
 
   const {
@@ -134,7 +134,7 @@ const ThemeConfigManagerRegistry = ({ children, ...props }: ThemeConfigManagerRe
             : {}),
         }}
       >
-        <ThemeConfigManagerStateProvider
+        <ThemeManagerStateProvider
           colorScheme={props.colorScheme}
           direction={props.direction}
           primaryColor={primaryColor}
@@ -144,9 +144,9 @@ const ThemeConfigManagerRegistry = ({ children, ...props }: ThemeConfigManagerRe
         >
           <Notifications autoClose={DEFAULT_NOTIFICATIONS_AUTO_CLOSE} position="top-right" />
           {children}
-        </ThemeConfigManagerStateProvider>
+        </ThemeManagerStateProvider>
       </MantineProvider>
     </DirectionProvider>
   );
 };
-export default ThemeConfigManagerRegistry;
+export default ThemeManagerRegistry;

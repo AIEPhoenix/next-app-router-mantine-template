@@ -1,25 +1,14 @@
 'use client';
 
 import { useEffect, useMemo, useState } from 'react';
-import {
-  ActionIcon,
-  Button,
-  ColorPicker,
-  ColorSwatch,
-  DEFAULT_THEME,
-  Flex,
-  HoverCard,
-  Text,
-  useMantineTheme,
-} from '@mantine/core';
-import { useThemeConfig } from '@/managers/ThemeConfigManager/context';
+import { ActionIcon, Button, ColorPicker, ColorSwatch, DEFAULT_THEME, Flex, HoverCard, Text } from '@mantine/core';
+import { useTheme } from '@/managers/ThemeManager/context';
 import { MdOutlineColorLens } from 'react-icons/md';
 
 const mantineDefaultColorNames = Object.keys(DEFAULT_THEME.colors);
 
 function PrimaryColorPicker() {
-  const { primaryColor, setPrimaryColor, isDark, colorPrimaryShade } = useThemeConfig();
-  const theme = useMantineTheme();
+  const { primaryColor, setPrimaryColor, isDark, colorPrimaryShade, theme } = useTheme();
 
   const [opened, setOpened] = useState(false);
   const hexColor = useMemo(() => {
@@ -74,7 +63,9 @@ function PrimaryColorPicker() {
             value={tempPrimaryColor}
             swatchesPerRow={9}
             format="hex"
-            onChange={(color) => setTempPrimaryColor(color)}
+            onChange={(color) => {
+              setTempPrimaryColor(color);
+            }}
             swatches={colorPickerSwatches}
           />
           <Flex mt={8} align="center" gap={12}>
@@ -90,7 +81,13 @@ function PrimaryColorPicker() {
               size="xs"
               onClick={() => {
                 setPrimaryColor('teal');
-                setTempPrimaryColor(theme.colors.teal[colorPrimaryShade]);
+                let defaultPrimaryColorShade = DEFAULT_THEME.primaryShade as number;
+                if (typeof DEFAULT_THEME.primaryShade !== 'number') {
+                  defaultPrimaryColorShade = isDark
+                    ? DEFAULT_THEME.primaryShade.dark
+                    : DEFAULT_THEME.primaryShade.light;
+                }
+                setTempPrimaryColor(theme.colors.teal[defaultPrimaryColorShade]);
               }}
             >
               重置
