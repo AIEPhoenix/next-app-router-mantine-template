@@ -1,3 +1,4 @@
+import { PropsWithChildren } from 'react';
 import i18nConfig from '@/i18nConfig';
 import type { Metadata } from 'next';
 import '@/styles/globals.scss';
@@ -19,10 +20,11 @@ export function generateStaticParams() {
 export default function RootLayout({
   children,
   params: { locale },
-}: Readonly<{
-  children: React.ReactNode;
-  params: { locale: string };
-}>) {
+}: Readonly<
+  {
+    params: { locale: string };
+  } & PropsWithChildren
+>) {
   const themeConfigFromCookies = getThemeConfigPersistentStateFromCookies();
 
   return (

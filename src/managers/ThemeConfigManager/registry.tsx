@@ -1,29 +1,31 @@
 'use client';
 
 import { PropsWithChildren, useMemo, useState } from 'react';
-import { deleteCookie, setCookie } from 'cookies-next';
-import { OptionsType } from 'cookies-next/lib/types';
-import dayjs from 'dayjs';
+import { DEFAULT_NOTIFICATIONS_AUTO_CLOSE } from '@/project-settings/global';
+import { generateColorsMap } from '@mantine/colors-generator';
 import {
+  DEFAULT_THEME,
   DirectionProvider,
   MantineColorShade,
   MantineColorsTuple,
+  MantinePrimaryShade,
   MantineProvider,
   localStorageColorSchemeManager,
   useComputedColorScheme,
   useDirection,
   useMantineColorScheme,
-  DEFAULT_THEME,
-  MantinePrimaryShade,
 } from '@mantine/core';
-import { generateColorsMap } from '@mantine/colors-generator';
+import { Notifications } from '@mantine/notifications';
+import { deleteCookie, setCookie } from 'cookies-next';
+import { OptionsType } from 'cookies-next/lib/types';
+import dayjs from 'dayjs';
+import ThemeConfigProvider from './context';
 import {
   THEME_COLOR_SCHEMA_STORE_NAME,
   THEME_DIRECTION_STORE_NAME,
   THEME_PRIMARY_COLOR_STORE_NAME,
-  ThemeConfigContextProps,
+  ThemeConfigContextValues,
 } from './def';
-import ThemeConfigProvider from './context';
 
 const cookieOptions: OptionsType = {
   expires: dayjs().add(3, 'year').toDate(),
@@ -35,7 +37,7 @@ const colorSchemeManager = localStorageColorSchemeManager({
 
 interface ThemeConfigManagerStateProviderProps
   extends PropsWithChildren,
-    Pick<ThemeConfigContextProps, 'colorScheme' | 'direction' | 'primaryColor'> {
+    Pick<ThemeConfigContextValues, 'colorScheme' | 'direction' | 'primaryColor'> {
   onPrimaryColorChange: (newPrimaryColor: string) => void;
 }
 
@@ -92,7 +94,7 @@ function ThemeConfigManagerStateProvider({ children, ...props }: ThemeConfigMana
 
 interface ThemeConfigManagerRegistryProps
   extends PropsWithChildren,
-    Pick<ThemeConfigContextProps, 'colorScheme' | 'direction' | 'primaryColor'> {}
+    Pick<ThemeConfigContextValues, 'colorScheme' | 'direction' | 'primaryColor'> {}
 
 const ThemeConfigManagerRegistry = ({ children, ...props }: ThemeConfigManagerRegistryProps) => {
   const [primaryColor, setPrimaryColor] = useState(props.primaryColor || 'teal');
@@ -140,6 +142,7 @@ const ThemeConfigManagerRegistry = ({ children, ...props }: ThemeConfigManagerRe
             setPrimaryColor(newPrimaryColor);
           }}
         >
+          <Notifications autoClose={DEFAULT_NOTIFICATIONS_AUTO_CLOSE} position="top-right" />
           {children}
         </ThemeConfigManagerStateProvider>
       </MantineProvider>

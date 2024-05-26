@@ -1,9 +1,10 @@
 'use client';
 
-import { PropsWithChildren, createContext, useContext } from 'react';
-import { ThemeConfigContextProps } from './def';
+import { PropsWithChildren, createContext, useContext, useMemo } from 'react';
+import { useMantineTheme } from '@mantine/core';
+import { ThemeConfigContextValues } from './def';
 
-const ThemeConfigContext = createContext<ThemeConfigContextProps | null>(null);
+const ThemeConfigContext = createContext<ThemeConfigContextValues | null>(null);
 
 export function useThemeConfig() {
   const context = useContext(ThemeConfigContext);
@@ -17,7 +18,9 @@ export function useThemeConfig() {
   return context;
 }
 
-interface ThemeConfigProviderProps extends ThemeConfigContextProps, PropsWithChildren {}
+interface ThemeConfigProviderProps
+  extends Omit<ThemeConfigContextValues, 'isDark' | 'colorPrimaryShade'>,
+    PropsWithChildren {}
 
 const ThemeConfigProvider = ({
   colorScheme,
@@ -31,23 +34,37 @@ const ThemeConfigProvider = ({
   setDirection,
   setPrimaryColor,
   children,
-}: ThemeConfigProviderProps) => (
-  <ThemeConfigContext.Provider
-    value={{
-      colorScheme,
-      activeColorScheme,
-      direction,
-      primaryColor,
-      toggleColorScheme,
-      setColorScheme,
-      clearColorScheme,
-      toggleDirection,
-      setDirection,
-      setPrimaryColor,
-    }}
-  >
-    {children}
-  </ThemeConfigContext.Provider>
-);
+}: ThemeConfigProviderProps) => {
+  const isDark = activeColorScheme === 'dark';
+  const theme = useMantineTheme();
+  const colorPrimaryShade = useMemo(() => {
+    const { primaryShade } = theme;
+    if (typeof primaryShade === 'number') {
+      return primaryShade;
+    }
+    return isDark ? primaryShade.dark : primaryShade.light;
+  }, [theme, isDark]);
+
+  return (
+    <ThemeConfigContext.Provider
+      value={{
+        colorScheme,
+        activeColorScheme,
+        direction,
+        primaryColor,
+        isDark,
+        colorPrimaryShade,
+        toggleColorScheme,
+        setColorScheme,
+        clearColorScheme,
+        toggleDirection,
+        setDirection,
+        setPrimaryColor,
+      }}
+    >
+      {children}
+    </ThemeConfigContext.Provider>
+  );
+};
 
 export default ThemeConfigProvider;

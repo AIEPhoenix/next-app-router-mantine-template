@@ -10,11 +10,14 @@ export type ThemeActiveColorScheme = ThemeColorScheme;
 export type ThemeDirection = Direction;
 export type ThemePrimaryColor = DefaultMantineColor;
 
-export interface ThemeConfigContextProps {
+export interface ThemeConfigContextValues {
   colorScheme: ThemeColorScheme;
   activeColorScheme: Exclude<ThemeActiveColorScheme, 'auto'>;
   direction: ThemeDirection;
   primaryColor: ThemePrimaryColor;
+
+  isDark: boolean;
+  colorPrimaryShade: number;
 
   toggleColorScheme: () => void;
   setColorScheme: (colorScheme: ThemeColorScheme) => void;

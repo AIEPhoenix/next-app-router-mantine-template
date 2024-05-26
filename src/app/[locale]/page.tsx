@@ -3,7 +3,8 @@ import { ColorSchemeToggle } from '@/components/ColorSchemeToggle';
 import DirectionToggle from '@/components/DirectionToggle';
 import I18nNamespace from '@/generated/i18n-namespace';
 import initTranslations from '@/app/i18n';
-import TranslationsProvider from '@/components/basic/TranslationsProvider';
+import TranslationsProvider from '@/components/basic/core/TranslationsProvider';
+import PrimaryColorPicker from '@/components/basic/core/PrimaryColorPicker';
 
 interface HomeProps {
   params: {
@@ -18,6 +19,7 @@ export default async function Home({ params: { locale } }: HomeProps) {
   return (
     <TranslationsProvider namespaces={i18nNamespaces} locale={locale} resources={resources}>
       <Welcome />
+      <PrimaryColorPicker />
       <ColorSchemeToggle />
       <DirectionToggle />
     </TranslationsProvider>

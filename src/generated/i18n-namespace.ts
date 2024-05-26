@@ -1,4 +1,4 @@
 const I18nNamespace = {
-  common: "common"
-}
+  common: 'common',
+};
 export default I18nNamespace;
