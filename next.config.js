@@ -22,7 +22,6 @@ const nextConfig = {
       '@mantine/dates',
       '@mantine/modals',
       '@mantine/nprogress',
-      '@mantine/notifications',
     ],
   },
   webpack(config) {
