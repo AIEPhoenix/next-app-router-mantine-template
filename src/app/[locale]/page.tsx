@@ -1,10 +1,10 @@
-import { Welcome } from '@/components/Welcome';
 import { ColorSchemeToggle } from '@/components/ColorSchemeToggle';
 import DirectionToggle from '@/components/DirectionToggle';
-import I18nNamespace from '@/generated/i18n-namespace';
-import initTranslations from '@/app/i18n';
-import TranslationsProvider from '@/components/basic/core/TranslationsProvider';
+import { Welcome } from '@/components/Welcome';
 import PrimaryColorPicker from '@/components/basic/core/PrimaryColorPicker';
+import TranslationsProvider from '@/components/basic/core/TranslationsProvider';
+import initTranslations from '@/app/i18n';
+import I18nNamespace from '@/generated/i18n-namespace';
 
 interface HomeProps {
   params: {

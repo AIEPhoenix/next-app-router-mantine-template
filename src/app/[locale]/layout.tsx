@@ -1,12 +1,11 @@
 import { PropsWithChildren } from 'react';
-import i18nConfig from '@/i18nConfig';
-import type { Metadata } from 'next';
-import '@/styles/globals.scss';
-
 import { ColorSchemeScript } from '@mantine/core';
-import { getThemeConfigPersistentStateFromCookies } from '@/managers/ThemeConfigManager/utils';
-import { THEME_COLOR_SCHEMA_STORE_NAME } from '@/managers/ThemeConfigManager/def';
+import type { Metadata } from 'next';
+import i18nConfig from '@/i18nConfig';
 import ManagersServerRegistry from '@/managers/ManagersRegistry';
+import { THEME_COLOR_SCHEMA_STORE_NAME } from '@/managers/ThemeConfigManager/def';
+import { getThemeConfigPersistentStateFromCookies } from '@/managers/ThemeConfigManager/utils';
+import '@/styles/globals.scss';
 
 export const metadata: Metadata = {
   title: 'Create Next App',

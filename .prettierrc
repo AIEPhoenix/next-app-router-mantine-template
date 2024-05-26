@@ -9,5 +9,27 @@
   "bracketSpacing": true,
   "jsxBracketSameLine": false,
   "arrowParens": "always",
-  "plugins": [ "prettier-plugin-tailwindcss" ]
+  "importOrder": [
+    "^react$",
+    "^@/project-settings/(.*)$",
+    "^next/(.*)$",
+    "^@/types/(.*)$",
+    "^@/data/(.*)$",
+    "^@mantine(.*)$",
+    "<THIRD_PARTY_MODULES>",
+    "^@/components/(.*)$",
+    "^@/services/(.*)$",
+    "^@/utils/(.*)$",
+    "^@/(.*)",
+    "^@/assets/(.*)$",
+    "^react-icons/(.*)$",
+    "^~icons/(.*)$",
+    "^[./]"
+  ],
+  "importOrderSeparation": false,
+  "importOrderSortSpecifiers": true,
+  "plugins": [
+    "prettier-plugin-tailwindcss",
+    "@trivago/prettier-plugin-sort-imports"
+  ]
 }

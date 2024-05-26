@@ -1,9 +1,9 @@
 'use client';
 
-import { Title, Text, Anchor } from '@mantine/core';
 import Image from 'next/image';
-import testImage from '@/assets/test/coffee-8342636.jpg';
+import { Anchor, Text, Title } from '@mantine/core';
 import { useTranslation } from 'react-i18next';
+import testImage from '@/assets/test/coffee-8342636.jpg';
 import I18nNamespace from '@/generated/i18n-namespace';
 import classes from './index.module.css';
 
