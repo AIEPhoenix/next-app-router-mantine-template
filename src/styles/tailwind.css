@@ -1,0 +1,13 @@
+/* add layer to tailwind base to solve conflict with mantine */
+@layer tailwind {
+  @tailwind base;
+}
+
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
