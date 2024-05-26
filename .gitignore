@@ -37,3 +37,5 @@ next-env.d.ts
 
 # IDE - JetBrains
 .idea
+
+locales-bk

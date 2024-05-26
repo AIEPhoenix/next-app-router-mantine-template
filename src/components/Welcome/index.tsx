@@ -1,9 +1,15 @@
+'use client';
+
 import { Title, Text, Anchor } from '@mantine/core';
 import Image from 'next/image';
 import testImage from '@/assets/test/coffee-8342636.jpg';
+import { useTranslation } from 'react-i18next';
+import I18nNamespace from '@/generated/i18n-namespace';
 import classes from './index.module.css';
 
 export function Welcome() {
+  const { t } = useTranslation(I18nNamespace.common);
+
   return (
     <>
       <Title className={classes.title} ta="center" mt={100}>
@@ -12,6 +18,7 @@ export function Welcome() {
           Mantine
         </Text>
       </Title>
+      {t('Hello World!')}
       <Text
         className="text-[rgba(0,0,0,0.7)] dark:text-white"
         ta="center"
